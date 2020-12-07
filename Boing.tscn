@@ -295,11 +295,13 @@ __meta__ = {
 shape = SubResource( 10 )
 
 [node name="GameOver" type="Sprite" parent="."]
+visible = false
 position = Vector2( 400, 240 )
 texture = ExtResource( 19 )
 script = ExtResource( 18 )
 
 [node name="MainMenu" type="AnimatedSprite" parent="."]
+visible = false
 position = Vector2( 400, 240 )
 frames = SubResource( 11 )
 script = ExtResource( 10 )
