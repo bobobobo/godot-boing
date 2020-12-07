@@ -2,7 +2,6 @@ extends Area2D
 
 signal on_goal
 
-func _on_area_entered(area, x_direction):
+func _on_area_entered(area):
 	if area.name == "Ball":
-		area.restart(x_direction)
 		emit_signal("on_goal")

@@ -1,20 +1,22 @@
 extends Node2D
 
-const Impact = preload("res://Impact.tscn")
+var state: Object
 
-var scoreLeft = 0
-var scoreRight = 0
+var number_of_players = 1
 
-func _on_bounce(position):
-	var impact = Impact.instance()
-	impact.position = position
-	add_child(impact)
+func _ready():
+	state = $MainMenu
+	call_deferred("_enter_state")
+	
+	
+func transition_to(new_state):
+	state = get_node(new_state)
+	_enter_state()
 
 
-func _on_goal(player):
-	if player == 1:
-		scoreLeft = scoreLeft + 1
-		$ScoreLeft.set_score(scoreLeft, true)
-	elif player == 2:
-		scoreRight = scoreRight + 1
-		$ScoreRight.set_score(scoreRight, true)
+func _enter_state():
+	state.enter(self, self)
+
+func _process(delta):
+	if state.has_method("process"):
+		state.process(delta)

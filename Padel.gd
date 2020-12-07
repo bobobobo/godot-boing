@@ -1,6 +1,6 @@
 extends Area2D
 
-const INITIAL_SPEED = 250
+const INITIAL_SPEED = 150
 var height
 var speed
 
@@ -9,8 +9,8 @@ func _ready():
 	speed = INITIAL_SPEED
 
 
-func _process(delta):
-	var direction = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+func process(delta):
+	var direction = $Controller.get_direction(delta)
 	position.y = clamp(position.y + direction * speed * delta, 80, height-80)
 
 

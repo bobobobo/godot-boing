@@ -25,18 +25,22 @@ func restart(start_direction):
 	position.x =get_viewport_rect().size.x/2
 	position.y =get_viewport_rect().size.y/2
 	speed = INITIAL_SPEED
-	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+
+func process(delta):
 	position = position + direction * speed * delta
-	speed = speed + 1 * delta
-	pass
+	speed = clamp(speed + 1 * delta, INITIAL_SPEED, 400)
+	
+	if position.y > 470 || position.y<10:
+		direction.y = -direction.y
+		emit_signal("on_bounce", position)
+
 
 
 func _on_area_entered(area):
 	if "Goal" in area.name:
-		$AudioPlayer.play_sound("score")
+		goal()
 		return
+
 	emit_signal("on_bounce", position)
 	
 	if "Player" in area.name:
@@ -58,3 +62,7 @@ func _on_area_entered(area):
 		$AudioPlayer.play_sound("bounce_synth")
 		direction = Vector2(direction.x, -direction.y).normalized()
 
+
+func goal():
+	$AudioPlayer.play_sound("score")
+	restart(direction.x)
