@@ -7,3 +7,5 @@ The original version of the game is available at https://github.com/Wireframe-Ma
 Graphics by Dan Malone - licensed under [CC BY-NC-SA 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/)<br>
 Music and sound by Allister Brimble - licensed under [CC BY-NC-SA 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/)<br>
 Everything else is licensed under the MIT license
+
+Online demo is available at https://bobobobo.github.io/godot-boing/ 
